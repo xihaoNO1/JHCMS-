@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>版本控制讲解内容</title>
+
+
+<style type="text/css">
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+ol,
+ul,
+li,
+img {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+html * {
+  font-family: "ff-din-web-pro-1", "ff-din-web-pro-2", sans-serif;
+  font-size: 16px;
+  line-height: 19.2px;
+  color-profile: sRGB;
+}
+body {
+  margin: 40px 70px;
+}
+p {
+  font-weight: lighter;
+  margin-bottom: 20px;
+}
+strong {
+  font-weight: bold;
+}
+ol,
+ul {
+  margin-left: 2em;
+  margin-bottom: 20px;
+}
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin-top: 10px;
+}
+li {
+  margin-bottom: 10px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: lighter;
+  text-transform: capitalize;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+h1 {
+  font-size: 24.624px;
+  line-height: 29.548799999999996px;
+}
+h2 {
+  font-size: 24.624px;
+  line-height: 29.548799999999996px;
+}
+h3 {
+  font-size: 23.44px;
+  line-height: 28.128px;
+}
+h4 {
+  font-size: 22.16px;
+  line-height: 26.592px;
+}
+h5 {
+  font-size: 22.16px;
+  line-height: 26.592px;
+}
+h6 {
+  font-size: 22.16px;
+  line-height: 26.592px;
+}
+img {
+  margin-bottom: 20px;
+}
+h1 img,
+h2 img,
+h3 img,
+h4 img,
+h5 img,
+h6 img,
+p img {
+  margin-bottom: 0;
+}
+pre {
+  margin-bottom: 20px;
+}
+pre,
+code {
+  font-family: monospace;
+}
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding: 15px;
+}
+blockquote {
+  border-left: 4px solid;
+  padding: 0 15px;
+}
+blockquote > :first-child {
+  margin-top: 0;
+}
+blockquote > :last-child {
+  margin-bottom: 15px;
+}
+h1 {
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 1px solid;
+}
+h2 {
+  border-bottom: 1px solid;
+}
+h3,
+h4,
+h5,
+h6 {
+  border-bottom: none;
+}
+html * {
+  color: #657b83;
+}
+html body {
+  background-color: #fdf6e3;
+}
+html h1,
+html h2,
+html h3,
+html h4,
+html h5,
+html h6 {
+  color: #586e75;
+  border-color: #657b83;
+}
+html a,
+html a:active,
+html a:visited {
+  color: #586e75;
+}
+html a:hover {
+  background-color: #eee8d5;
+}
+html pre {
+  color: #586e75;
+  background-color: #eee8d5;
+}
+html a,
+html a:active,
+html a:visited,
+html code.url {
+  color: #b58900;
+}
+html h1 {
+  color: #b58900;
+}
+html h2,
+html h3,
+html h4,
+html h5,
+html h6 {
+  color: #b58900;
+}
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+@media print {
+  body {
+    margin: 0;
+  }
+  * {
+    color: #000 !important;
+  }
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">版本控制</h1>
+
+<h3 id="toc_1">git 相关知识</h3>
+
+<ol>
+<li><p>查看所有分支</p>
+
+<div><pre><code class="language-none">git branch -a   </code></pre></div></li>
+<li><p>从分支创建分支并检出</p>
+
+<div><pre><code class="language-none">git checkout -b xxx (xxx为分支名)</code></pre></div></li>
+<li><p>从commit节点创建分支并检出</p>
+
+<div><pre><code class="language-none">git checkout -b xxx yyy (xxx为分支名,yyy为commit的hash值)</code></pre></div></li>
+<li><p>拉取分支</p>
+
+<div><pre><code class="language-none">git pull</code></pre></div></li>
+<li><p>推送分支</p>
+
+<div><pre><code class="language-none">git push --set-upstream origin xxx  (第一次)
+git push (第一次之后)</code></pre></div></li>
+<li><p>遴选某个commit 到 分支 xxx(可以理解为跨分支拉取)</p>
+
+<p>1)切换到xxx</p>
+
+<div><pre><code class="language-none">git checkout xxx</code></pre></div>
+
+<p>2)找到需要遴选的commit的hash值 yyy</p>
+
+<div><pre><code class="language-none">git cherry-pick --quit(非必须)
+git cherry-pick yyy zzz ...</code></pre></div>
+
+<p>3)提交</p>
+
+<div><pre><code class="language-none">git add --a
+git commit -m &quot;更新的内容&quot;
+git pull
+...有冲突时需要合并,以他人,以我的或者手工合并
+git push (有对应的远程分支时)</code></pre></div></li>
+<li><p>回退版本</p>
+
+<div><pre><code class="language-none">git reset --hard xxx (xxx为某个提交的hash值)
+或者
+同第2条,创建截止到某个提交的分支  </code></pre></div></li>
+</ol>
+
+<h3 id="toc_2">版本控制,相关分支创建</h3>
+
+<p>注:以iOS端-外卖3客户端仓库为例</p>
+
+<div><pre><code class="language-none">master
+master-temp-打包
+master-广告页为视频版本
+version-3.1
+version-3.5
+version-3.6
+version-3.7
+version-3.7Ltd
+version-3.8</code></pre></div>
+
+<h1 id="toc_3">1. master分支的代码最新,相当于beta版本,其代码总是和最新版本分支的代码保持一致,移动端和后台各代码版本号需保持一致</h1>
+
+<h1 id="toc_4">2. version-x.x为每个版本的稳定版本,即release版本</h1>
+
+<h1 id="toc_5">3. version-x.x-添加的功能:创建临时分支,用于完成某个功能,完成并查验后和version-x.x合并</h1>
+
+<h1 id="toc_6">4. 分支bug需要遴选时,windows步骤请具体百度下</h1>
+
+<h1 id="toc_7">5. 找回文件推荐使用指定commit创建临时分支的方法</h1>
+
+<h1 id="toc_8">6. 找回文件和添加临时功能完成之后,即可将临时的分支删除</h1>
+
+<h1 id="toc_9">7. 以上字母小写即可,无需大写</h1>
+
+<h3 id="toc_10">git常用其他命令</h3>
+
+<ol>
+<li><p>查看所有分支的提交日志</p>
+
+<div><pre><code class="language-none">git log </code></pre></div></li>
+<li><p>查看xxx分支的提交日志</p>
+
+<div><pre><code class="language-none">git log xxx </code></pre></div></li>
+<li><p>查看某个文件的所有提交及详细修改内</p>
+
+<div><pre><code class="language-none">git log -p file的绝对路径 </code></pre></div></li>
+<li><p>查看最后修改file每一行的人员,时间等---背锅神器</p>
+
+<div><pre><code class="language-none">git blame file的绝对路径 </code></pre></div></li>
+</ol>
+
+
+
+
+</body>
+
+</html>
